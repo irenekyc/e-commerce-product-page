@@ -1,0 +1,93 @@
+@import "../../variables.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  max-height: 60px;
+  @include container;
+  @include align-item-center;
+  @include lg-and-up {
+    max-height: 78px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid $light-gray;
+  height: 100%;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+  }
+
+  &__hamburger {
+    margin-right: 16px;
+    @include align-item-center;
+    @include lg-and-up {
+      display: none;
+    }
+  }
+
+  &__cart {
+    @include align-item-center;
+    margin-right: 16px;
+    svg {
+      height: 18px;
+    }
+    @include lg-and-up {
+      margin-right: 24px;
+      svg {
+        height: 24px;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    display: none;
+
+    @include lg-and-up {
+      margin-left: 55px;
+      height: 78px;
+      display: flex;
+    }
+
+    &__item {
+      margin-right: 30px;
+      @include align-item-center;
+      position: relative;
+      color: $gray;
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        height: 3px;
+        width: 0;
+        transition: all 0.4s ease-in-out;
+        content: "";
+        left: 0;
+        background: $primary-orange;
+      }
+
+      &:hover {
+        color: $dark;
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

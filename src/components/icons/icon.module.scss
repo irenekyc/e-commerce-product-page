@@ -1,0 +1,16 @@
+@import "../../variables.scss";
+
+.cart {
+  position: relative;
+
+  &__badge {
+    padding: 0 3px;
+    border-radius: 2px;
+    background: $primary-orange;
+    color: $white;
+    font-size: 10px;
+    position: absolute;
+    top: -50%;
+    right: -4px;
+  }
+}

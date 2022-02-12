@@ -1,0 +1,50 @@
+$gray: hsl(220, 14%, 75%);
+$light-gray: hsl(223, 64%, 98%);
+$dark: hsl(220, 13%, 13%);
+
+$primary-orange: hsl(26, 100%, 55%);
+
+$white: #fff;
+
+@mixin md-and-up {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin lg-and-up {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin xl-and-up {
+  @media screen and (min-width: 1240px) {
+    @content;
+  }
+}
+
+@mixin container {
+  padding-right: 20px;
+  padding-left: 20px;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include md-and-up {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  @include lg-and-up {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+}
+
+@mixin align-item-center {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
