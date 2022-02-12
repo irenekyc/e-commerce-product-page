@@ -1,0 +1,126 @@
+@import "../../variables.scss";
+
+.productDescription {
+  &__text {
+    width: 100%;
+    padding-top: 20px;
+    max-width: 425px;
+    margin-right: auto;
+    margin-left: auto;
+    flex: 1;
+    h3 {
+      color: $primary-orange;
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 32px;
+      color: $dark;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: $gray-blue;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+  }
+  &__priceDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 24px;
+
+    @include md-and-up {
+      flex-wrap: wrap;
+    }
+  }
+  &__price__main {
+    font-size: 26px;
+    margin-right: 16px;
+  }
+  &__price__discount {
+    flex: 1;
+    font-size: 18px;
+    margin-right: 16px;
+
+    span {
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: $secondary-orange;
+      color: $primary-orange;
+    }
+  }
+  &__price__cross {
+    font-size: 18px;
+
+    color: $gray;
+    span {
+      position: relative;
+      &:after {
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        left: 0;
+        height: 2px;
+        background: $gray;
+        content: "";
+      }
+    }
+
+    @include md-and-up {
+      margin-top: 16px;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__cartSwitcherRow {
+    @include md-and-up {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__cartSwitcher {
+    display: flex;
+    background: $light-gray;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    button {
+      padding: 20px;
+    }
+    span {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    @include md-and-up {
+      margin-bottom: 0;
+      margin-right: 16px;
+      width: 150px;
+      flex: 0 0 150px;
+    }
+  }
+  &__cartButton {
+    width: 100%;
+    padding: 18px;
+    display: flex;
+    background: $primary-orange;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    svg {
+      height: 18px;
+      margin-right: 12px;
+    }
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      color: $white;
+    }
+  }
+}

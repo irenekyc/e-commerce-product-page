@@ -1,0 +1,14 @@
+@import "./variables.scss";
+
+.product-description__section {
+  margin-top: 60px;
+  @include container;
+
+  @include md-and-up {
+    margin-top: 120px;
+  }
+  @include xl-and-up {
+    display: flex;
+    align-items: center;
+  }
+}
