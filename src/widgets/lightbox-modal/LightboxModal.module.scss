@@ -1,0 +1,115 @@
+@import "../../variables.scss";
+
+.lightboxModal {
+  &__container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba($black, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+
+    &__show {
+      opacity: 1;
+      visibility: visible;
+      z-index: 9000;
+    }
+  }
+
+  &__content {
+    max-width: 600px;
+  }
+
+  &__closeButton {
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 12px;
+  }
+  &__swiper {
+    padding: 0 25px;
+    max-width: 600px;
+    padding-bottom: 90px;
+  }
+
+  &__slide {
+    width: 550px;
+    height: 550px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 18px;
+    }
+  }
+
+  &__nav {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__nav__prev {
+    width: 50px;
+    height: 50px;
+    background: $white;
+    position: absolute;
+    top: 250px;
+    left: 0;
+    z-index: 9999;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav__next {
+    width: 50px;
+    height: 50px;
+    background: $white;
+    position: absolute;
+    top: 250px;
+    right: 0;
+    z-index: 9999;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__pagination {
+    margin-top: 32px;
+    max-width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 9999;
+
+    button {
+      opacity: 1 !important;
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+      }
+    }
+  }
+}

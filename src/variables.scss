@@ -8,6 +8,7 @@ $primary-orange: hsl(26, 100%, 55%);
 $secondary-orange: hsl(25, 100%, 94%);
 
 $white: #fff;
+$black: #000;
 
 @mixin md-and-up {
   @media screen and (min-width: 768px) {
