@@ -12,3 +12,11 @@
     align-items: center;
   }
 }
+
+.swiper-pagination-bullet-active {
+  border: 2px solid $primary-orange !important;
+  background: $white !important;
+  img {
+    opacity: 0.5;
+  }
+}

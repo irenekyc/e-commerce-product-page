@@ -6,14 +6,18 @@ import Avatar from "../avatar";
 import MobileMenu from "../mobile-menu";
 import { SITE_NAVIGATION } from "../../constants/site-navigation";
 import { RouteType } from "../../typings/Route";
+import CartModal from "../../widgets/cart-modal";
 
 const Header: FunctionComponent = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [cartModalOpen, setCartModalOpen] = useState<boolean>(false);
   const openMobileMenu = () => setMobileMenuOpen(true);
 
   const closeMenu = () => setMobileMenuOpen(false);
 
-  const openCartDropdown = () => {};
+  const toggleCartDropdown = () => setCartModalOpen(!cartModalOpen);
+  const closeCartDropdown = () => setCartModalOpen(false);
+
   return (
     <>
       <MobileMenu isOpen={mobileMenuOpen} closeMenu={closeMenu} />
@@ -35,13 +39,18 @@ const Header: FunctionComponent = () => {
             </ul>
           </div>
           <div className={styles.nav__right}>
-            <button className={styles.nav__cart} onClick={openCartDropdown}>
+            <button
+              className={styles.nav__cart}
+              onClick={toggleCartDropdown}
+              id="cart-icon"
+            >
               <CartIcon showBadge />
             </button>
             <Avatar />
           </div>
         </nav>
       </header>
+      <CartModal show={cartModalOpen} clickClose={closeCartDropdown} />
     </>
   );
 };

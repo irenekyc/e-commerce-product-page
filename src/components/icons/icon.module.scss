@@ -4,13 +4,17 @@
   position: relative;
 
   &__badge {
-    padding: 0 3px;
-    border-radius: 2px;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    align-items: center;
     background: $primary-orange;
     color: $white;
     font-size: 10px;
     position: absolute;
-    top: -50%;
-    right: -4px;
+    top: -48%;
+    right: -9px;
   }
 }

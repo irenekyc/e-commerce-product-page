@@ -5,3 +5,4 @@ export { default as PrevIcon } from "./PrevIcon";
 export { default as NextIcon } from "./NextIcon";
 export { default as MinusIcon } from "./MinusIcon";
 export { default as PlusIcon } from "./PlusIcon";
+export { default as DeleteIcon } from "./DeleteIcon";
