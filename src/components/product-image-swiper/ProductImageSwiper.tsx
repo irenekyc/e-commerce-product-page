@@ -9,23 +9,17 @@ import "swiper/css/effect-fade";
 import styles from "./ProductImageSwiper.module.scss";
 import { PrevIcon, NextIcon } from "../icons";
 import LightboxModal from "../../widgets/lightbox-modal/LightboxModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { ProductImagesType } from "../../typings/Product";
 
 const ProductImageSwiper: FunctionComponent = () => {
   const paginationRowRef = useRef<HTMLDivElement | null>(null);
   const [openLightbox, setOpenLightbox] = useState<boolean>(false);
   const [slideIndex, setSlideIndex] = useState<string>("0");
-  const images = [
-    "/images/image-product-1.jpg",
-    "/images/image-product-2.jpg",
-    "/images/image-product-3.jpg",
-    "/images/image-product-4.jpg",
-  ];
-  const images_thumbnail = [
-    "/images/image-product-1-thumbnail.jpg",
-    "/images/image-product-2-thumbnail.jpg",
-    "/images/image-product-3-thumbnail.jpg",
-    "/images/image-product-4-thumbnail.jpg",
-  ];
+  const { info: productInfo } = useSelector(
+    (state: RootState) => state.product
+  );
 
   const onClickSlide = (e: MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth <= 992) return;
@@ -33,6 +27,10 @@ const ProductImageSwiper: FunctionComponent = () => {
     setOpenLightbox(true);
     setSlideIndex(e.currentTarget.id);
   };
+
+  if (!productInfo) return null;
+  const { images } = productInfo;
+
   return (
     <>
       <LightboxModal
@@ -55,20 +53,20 @@ const ProductImageSwiper: FunctionComponent = () => {
           el: "#swiper-sneakers-pagination",
           clickable: true,
           renderBullet: function (index, className) {
-            return `<button class="${className}"><img src=${images_thumbnail[index]} alt="" /></button>`;
+            return `<button class="${className}"><img src=${images[index].thumbnail} alt="" /></button>`;
           },
         }}
         loop={true}
         className={styles.productImageSwiper__container}
       >
-        {images.map((image: string, index: number) => (
+        {images.map((image: ProductImagesType, index: number) => (
           <SwiperSlide
             className={styles.productImageSwiper__slide}
-            key={image}
+            key={`product-image-${index}`}
             onClick={onClickSlide}
             id={index.toString()}
           >
-            <img src={image} alt="" />
+            <img src={image.jpg} alt="" />
           </SwiperSlide>
         ))}
         <div
