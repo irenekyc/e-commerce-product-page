@@ -28,4 +28,5 @@ html,
 body {
   background: white;
   color: hsl(220, 13%, 13%);
+  font-family: "Kumbh Sans", sans-serif;
 }
