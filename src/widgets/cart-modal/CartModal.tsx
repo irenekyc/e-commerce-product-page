@@ -5,6 +5,9 @@ import styles from "./CartModal.module.scss";
 
 import { CartItem } from "../../typings/Cart";
 import { DeleteIcon } from "../../components/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store";
+import { deleteProductFromCart } from "../../reducer/user/actions";
 
 interface CartModalProps {
   show: boolean;
@@ -16,25 +19,15 @@ const CartModal: FunctionComponent<CartModalProps> = ({
   clickClose,
 }: CartModalProps) => {
   const [modalPositionX, setModalPositionX] = useState<string>("50%");
-  const cartItems: CartItem[] = [
-    {
-      product: {
-        id: "1",
-        brand: "Sneakers Limited",
-        name: "Autumn Limited Edition Sneakers",
-        price: {
-          original: 250,
-          discount: "50%",
-          discounted: 125,
-        },
-        description: "descriptioin",
-      },
-      number: 3,
-    },
-  ];
+  const { cart: cartItems } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
   const onClickCheckout = () => {
     clickClose();
+  };
+
+  const onClickDeleteCartItem = (productId: string) => {
+    dispatch(deleteProductFromCart({ productId }));
   };
 
   useEffect(() => {
@@ -61,41 +54,52 @@ const CartModal: FunctionComponent<CartModalProps> = ({
         <h3>Cart</h3>
       </div>
       <div className={styles.cartModal__content}>
-        <ul>
-          {cartItems.map((cartItem: CartItem) => (
-            <li
-              className={styles.cartModal__cartItem}
-              key={cartItem.product.id}
+        {cartItems.length === 0 ? (
+          <p className={styles.cartModal__content__emptyText}>
+            {" "}
+            Your cart is empty
+          </p>
+        ) : (
+          <>
+            <ul>
+              {cartItems.map((cartItem: CartItem) => (
+                <li
+                  className={styles.cartModal__cartItem}
+                  key={cartItem.product.id}
+                >
+                  <img
+                    src={"/images/image-product-1-thumbnail.jpg"}
+                    alt={cartItem.product.id}
+                  />
+                  <div className={styles.cartModal__cartItem__text}>
+                    <p>{cartItem.product.name}</p>
+                    <p>
+                      ${cartItem.product.price.discounted.toFixed(2)} x{" "}
+                      {cartItem.number}{" "}
+                      <span className={styles.cartModal__subTotal}>
+                        $
+                        {(
+                          cartItem.product.price.discounted * cartItem.number
+                        ).toFixed(2)}
+                      </span>
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => onClickDeleteCartItem(cartItem.product.id)}
+                  >
+                    <DeleteIcon />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              className={styles.cartModal__checkoutButton}
+              onClick={onClickCheckout}
             >
-              <img
-                src={"/images/image-product-1-thumbnail.jpg"}
-                alt={cartItem.product.id}
-              />
-              <div className={styles.cartModal__cartItem__text}>
-                <p>{cartItem.product.name}</p>
-                <p>
-                  ${cartItem.product.price.discounted.toFixed(2)} x{" "}
-                  {cartItem.number}{" "}
-                  <span className={styles.cartModal__subTotal}>
-                    $
-                    {(
-                      cartItem.product.price.discounted * cartItem.number
-                    ).toFixed(2)}
-                  </span>
-                </p>
-              </div>
-              <button>
-                <DeleteIcon />
-              </button>
-            </li>
-          ))}
-        </ul>
-        <button
-          className={styles.cartModal__checkoutButton}
-          onClick={onClickCheckout}
-        >
-          Checkout
-        </button>
+              Checkout
+            </button>{" "}
+          </>
+        )}
       </div>
     </div>
   );
