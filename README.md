@@ -14,7 +14,7 @@ Swiper for product image carousel
 
 # Design Preview
 
-[!design preview](../master/design/desktop-preview.jpg)
+![design preview](../master/design/desktop-preview.jpg)
 
 # Getting Started with Create React App
 
