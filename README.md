@@ -2,11 +2,14 @@
 
 This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Live Website:
+Live Website: https://irenekyc.github.io/e-commerce-product-page/
 
 Stacks:
+
 React
+
 Redux toolkit for state management
+
 Swiper for product image carousel
 
 # Design Preview
