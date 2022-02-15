@@ -2,7 +2,7 @@
   "name": "product-page-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://irenekyc.github.io/e-commerce-product-page",
+  "homepage": "https://irenekyc.github.io/e-commerce-product-page/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
     "@testing-library/jest-dom": "^5.14.1",
